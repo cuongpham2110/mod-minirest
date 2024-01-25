@@ -140,6 +140,8 @@ generate_api(Security, Api = {Path, _MetaData, _Function, _Options}) ->
 generate_api_(Default, {Path, MetaData, Function, Options}) ->
     MergeDefFun =
         fun(Method, MethodDef0, NextMetaData) ->
+            io:format("Method ~p~n",[Method]),
+            io:format("MethodDef0 ~p~n",[MethodDef0]),
             GenerateMethodDef = maps:merge(Default, decs_str_to_binary(MethodDef0)),
             NextMetaData#{Method => GenerateMethodDef}
         end,
